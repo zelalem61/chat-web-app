@@ -6,7 +6,7 @@ import image3 from "@/assets/image-3.png";
 import image4 from "@/assets/image-4.png";
 import image5 from "@/assets/image-5.png";
 import image6 from "@/assets/image-6.png";
-import notion from "@/assets/notion.png";
+import notion from "@/assets/Notion.png";
 import trello from "@/assets/trello.png";
 import { ChatView, Message } from "@/components/messaging/ChatView";
 import { ContactInfoPanel } from "@/components/messaging/ContactInfoPanel";
