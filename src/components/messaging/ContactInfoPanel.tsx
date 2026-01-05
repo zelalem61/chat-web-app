@@ -1,9 +1,9 @@
-import { useState } from "react";
-import { X, Phone, Video, FileText } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
+import { cn } from "@/lib/utils";
+import { Phone, Video, X } from "lucide-react";
+import { useState } from "react";
 
 interface MediaItem {
   id: string;
@@ -48,7 +48,7 @@ export function ContactInfoPanel({ contact, media, onClose }: ContactInfoPanelPr
   };
 
   return (
-    <div className="flex h-full w-80 flex-col border-l border-border bg-card animate-slide-in-right">
+    <div className="flex h-[1000px] w-[450px] flex-col border-l border-border bg-card animate-slide-in-right">
       {/* Header */}
       <div className="flex items-center justify-between border-b border-border px-6 py-4">
         <h2 className="text-lg font-semibold text-foreground">Contact Info</h2>
@@ -73,17 +73,17 @@ export function ContactInfoPanel({ contact, media, onClose }: ContactInfoPanelPr
       </div>
 
       {/* Call Buttons */}
-      <div className="flex gap-3 px-6 pb-4">
+      <div className="flex gap-1.5 px-6 pb-4">
         <Button
           variant="outline"
-          className="flex-1 h-11 gap-2 rounded-lg border-border text-foreground hover:bg-secondary"
+          className="h-8 w-[193px] p-2 gap-1.5 rounded-lg border border-border text-foreground hover:bg-secondary"
         >
           <Phone className="h-4 w-4" />
           Audio
         </Button>
         <Button
           variant="outline"
-          className="flex-1 h-11 gap-2 rounded-lg border-border text-foreground hover:bg-secondary"
+          className="h-8 w-[193px] p-2 gap-1.5 rounded-lg border border-border text-foreground hover:bg-secondary"
         >
           <Video className="h-4 w-4" />
           Video

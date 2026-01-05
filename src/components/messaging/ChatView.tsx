@@ -1,16 +1,17 @@
-import { useState } from "react";
-import { Search, Phone, Video, MoreHorizontal, Mic, Smile, Paperclip, Send } from "lucide-react";
-import { cn } from "@/lib/utils";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { cn } from "@/lib/utils";
+import { Mic, MoreHorizontal, Paperclip, Phone, Search, Send, Smile, Video } from "lucide-react";
+import { useState } from "react";
 
 export interface Message {
   id: string;
   content: string;
-  timestamp: string;
+  timestamp?: string;
   isSent: boolean;
   isRead?: boolean;
+  reactions?: string[];
 }
 
 interface ChatViewProps {
@@ -137,7 +138,7 @@ export function ChatView({
             </div>
 
             {/* Messages */}
-            <div className="space-y-4">
+            <div>
               {msgs.map((message) => (
                 <div
                   key={message.id}
@@ -146,16 +147,21 @@ export function ChatView({
                     message.isSent ? "justify-end" : "justify-start"
                   )}
                 >
-                  <div className="max-w-[65%]">
+                  <div className="max-w-[65%] relative">
                     <div
                       className={cn(
-                        "rounded-2xl px-4 py-2.5 text-sm",
+                        "rounded-2xl px-4 py-2.5 text-sm relative",
                         message.isSent
                           ? "rounded-br-sm bg-message-sent text-message-sent-foreground"
                           : "rounded-bl-sm bg-message-received text-message-received-foreground shadow-sm"
                       )}
                     >
                       <p className="leading-relaxed whitespace-pre-wrap">{message.content}</p>
+                      {message.reactions && message.reactions.length > 0 && (
+                        <div className="absolute -bottom-2 left-2 w-5 h-5 bg-white rounded-full flex items-center justify-center text-xs">
+                          {message.reactions[0]}
+                        </div>
+                      )}
                     </div>
                     <div
                       className={cn(

@@ -1,18 +1,18 @@
-import { useState } from "react";
-import { Search, Filter, Edit3, MoreHorizontal, MessageCircle, Archive, Check, CheckCheck } from "lucide-react";
-import { cn } from "@/lib/utils";
-import { 
+import { Button } from "@/components/ui/button";
+import {
   ContextMenu,
   ContextMenuContent,
   ContextMenuItem,
   ContextMenuSeparator,
-  ContextMenuTrigger,
   ContextMenuSub,
-  ContextMenuSubTrigger,
   ContextMenuSubContent,
+  ContextMenuSubTrigger,
+  ContextMenuTrigger,
 } from "@/components/ui/context-menu";
-import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
+import { cn } from "@/lib/utils";
+import { Archive, CheckCheck, Edit3, Filter, MessageCircle, Search } from "lucide-react";
+import { useState } from "react";
 
 export interface Conversation {
   id: string;
@@ -69,13 +69,13 @@ export function ConversationList({
   };
 
   return (
-    <div className="flex h-full w-80 flex-col border-r border-border bg-card">
+    <div className="flex h-[932px] w-[400px] flex-col rounded-[24px] border-r border-border bg-card p-6 gap-6">
       {/* Header */}
-      <div className="flex items-center justify-between p-4">
+      <div className="flex items-center justify-between">
         <h1 className="text-xl font-semibold text-foreground">All Message</h1>
         <Button
           onClick={onNewMessage}
-          className="h-9 gap-2 rounded-full bg-primary px-4 text-sm font-medium text-primary-foreground hover:bg-primary/90"
+          className="h-8 w-[134px] p-2 gap-1.5 rounded-lg border border-border bg-primary text-sm font-medium text-primary-foreground hover:bg-primary/90"
         >
           <Edit3 className="h-4 w-4" />
           New Message
@@ -83,20 +83,20 @@ export function ConversationList({
       </div>
 
       {/* Search */}
-      <div className="flex items-center gap-2 px-4 pb-3">
+      <div className="flex items-center gap-2">
         <div className="relative flex-1">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+          <Search className="absolute left-[10px] top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
           <Input
             placeholder="Search in message"
             value={searchQuery}
             onChange={(e) => setSearchQuery(e.target.value)}
-            className="h-10 rounded-lg border-border bg-secondary pl-9 text-sm placeholder:text-muted-foreground focus-visible:ring-primary"
+            className="h-10 w-[296px] rounded-[10px] border border-border bg-secondary py-[10px] pr-[5px] pl-[34px] text-sm placeholder:text-muted-foreground focus-visible:ring-primary"
           />
         </div>
         <Button
           variant="outline"
           size="icon"
-          className="h-10 w-10 shrink-0 rounded-lg border-border"
+          className="h-10 w-10 shrink-0 rounded-[10px] border border-border p-[10px]"
         >
           <Filter className="h-4 w-4 text-muted-foreground" />
         </Button>

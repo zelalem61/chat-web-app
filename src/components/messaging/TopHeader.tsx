@@ -1,7 +1,7 @@
-import { Search, Bell, Settings, ChevronDown, MessageCircle } from "lucide-react";
+import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
-import { Avatar, AvatarImage, AvatarFallback } from "@/components/ui/avatar";
+import { Bell, ChevronDown, MessageCircle, Settings } from "lucide-react";
 
 interface TopHeaderProps {
   userAvatar?: string;
@@ -19,17 +19,17 @@ export function TopHeader({ userAvatar, userName = "User" }: TopHeaderProps) {
 
       {/* Center - Search */}
       <div className="flex-1 max-w-md mx-8">
-        <div className="relative">
-          <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" />
+        <div className="flex items-center w-[476px] gap-4">
+          {/* <Search className="absolute left-3 top-1/2 h-4 w-4 -translate-y-1/2 text-muted-foreground" /> */}
           <Input
             placeholder="Search"
             className="h-10 w-full rounded-lg border-border bg-secondary pl-9 pr-16 text-sm placeholder:text-muted-foreground focus-visible:ring-primary"
           />
-          <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-xs text-muted-foreground">
+          {/* <div className="absolute right-3 top-1/2 -translate-y-1/2 flex items-center gap-1 text-xs text-muted-foreground">
             <span className="rounded border border-border bg-background px-1.5 py-0.5 font-medium">⌘</span>
             <span className="text-muted-foreground">+</span>
             <span className="rounded border border-border bg-background px-1.5 py-0.5 font-medium">K</span>
-          </div>
+          </div> */}
         </div>
       </div>
 

@@ -1,18 +1,28 @@
-import { useState } from "react";
-import { IconSidebar } from "@/components/messaging/IconSidebar";
-import { ConversationList, Conversation } from "@/components/messaging/ConversationList";
+import asana from "@/assets/asana.png";
+import basecamp from "@/assets/basecamp.png";
+import image1 from "@/assets/image-1.png";
+import image2 from "@/assets/image-2.png";
+import image3 from "@/assets/image-3.png";
+import image4 from "@/assets/image-4.png";
+import image5 from "@/assets/image-5.png";
+import image6 from "@/assets/image-6.png";
+import notion from "@/assets/notion.png";
+import trello from "@/assets/trello.png";
 import { ChatView, Message } from "@/components/messaging/ChatView";
-import { TopHeader } from "@/components/messaging/TopHeader";
 import { ContactInfoPanel } from "@/components/messaging/ContactInfoPanel";
+import { Conversation, ConversationList } from "@/components/messaging/ConversationList";
+import { IconSidebar } from "@/components/messaging/IconSidebar";
 import { NewMessageModal } from "@/components/messaging/NewMessageModal";
+import { TopHeader } from "@/components/messaging/TopHeader";
 import { UserMenu } from "@/components/messaging/UserMenu";
+import { useState } from "react";
 
 // Sample data
 const sampleConversations: Conversation[] = [
   {
     id: "1",
     name: "Adrian Kurt",
-    avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face",
+    avatar: image1,
     lastMessage: "Thanks for the explanation!",
     timestamp: "3 mins ago",
     isRead: true,
@@ -21,7 +31,7 @@ const sampleConversations: Conversation[] = [
   {
     id: "2",
     name: "Yomi Immanuel",
-    avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face",
+    avatar: image5,
     lastMessage: "Let's do a quick call after lunch, I'll explai...",
     timestamp: "12 mins ago",
     isRead: true,
@@ -30,7 +40,7 @@ const sampleConversations: Conversation[] = [
   {
     id: "3",
     name: "Bianca Nubia",
-    avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face",
+    avatar: image2,
     lastMessage: "anytime! my pleasure~",
     timestamp: "32 mins ago",
     isRead: true,
@@ -39,7 +49,7 @@ const sampleConversations: Conversation[] = [
   {
     id: "4",
     name: "Zender Lowre",
-    avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face",
+    avatar: image1,
     lastMessage: "Okay cool, that make sense 👍",
     timestamp: "1 hour ago",
     isRead: true,
@@ -48,7 +58,7 @@ const sampleConversations: Conversation[] = [
   {
     id: "5",
     name: "Palmer Dian",
-    avatar: "https://images.unsplash.com/photo-1599566150163-29194dcabd36?w=100&h=100&fit=crop&crop=face",
+    avatar: image4,
     lastMessage: "Thanks, Jonas! That helps 😊",
     timestamp: "5 hour ago",
     isRead: true,
@@ -57,7 +67,7 @@ const sampleConversations: Conversation[] = [
   {
     id: "6",
     name: "Yuki Tanaka",
-    avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face",
+    avatar: image6,
     lastMessage: "Have you watch the new season of Danm...",
     timestamp: "12 hour ago",
     isRead: true,
@@ -66,23 +76,23 @@ const sampleConversations: Conversation[] = [
 ];
 
 const sampleContacts = [
-  { id: "c1", name: "Adrian Kurt", avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop&crop=face", email: "adrian@email.com" },
-  { id: "c2", name: "Bianca Lofre", avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=100&h=100&fit=crop&crop=face", email: "bianca@email.com" },
-  { id: "c3", name: "Diana Sayu", avatar: "https://images.unsplash.com/photo-1534528741775-53994a69daeb?w=100&h=100&fit=crop&crop=face", email: "diana@email.com" },
-  { id: "c4", name: "Palmer Dian", avatar: "https://images.unsplash.com/photo-1599566150163-29194dcabd36?w=100&h=100&fit=crop&crop=face", email: "palmer@email.com" },
-  { id: "c5", name: "Sam Kohler", avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=100&h=100&fit=crop&crop=face", email: "sam@email.com" },
-  { id: "c6", name: "Yuki Tanaka", avatar: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&h=100&fit=crop&crop=face", email: "yuki@email.com" },
-  { id: "c7", name: "Zender Lowre", avatar: "https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=100&h=100&fit=crop&crop=face", email: "zender@email.com" },
+  { id: "c1", name: "Adrian Kurt", avatar: image1, email: "adrian@email.com" },
+  { id: "c2", name: "Bianca Lofre", avatar: image2, email: "bianca@email.com" },
+  { id: "c3", name: "Diana Sayu", avatar: image3, email: "diana@email.com" },
+  { id: "c4", name: "Palmer Dian", avatar: image4, email: "palmer@email.com" },
+  { id: "c5", name: "Sam Kohler", avatar: image5, email: "sam@email.com" },
+  { id: "c6", name: "Yuki Tanaka", avatar: image6, email: "yuki@email.com" },
+  { id: "c7", name: "Zender Lowre", avatar: image1, email: "zender@email.com" },
 ];
 
 const sampleMessages: Message[] = [
-  { id: "m1", content: "Hey, Jonjon", timestamp: "10:17 AM", isSent: false },
-  { id: "m2", content: "Can you help with with the last task for Eventora, please?", timestamp: "10:17 AM", isSent: false },
+  { id: "m1", content: "Hey, Jonjon", isSent: false },
+  { id: "m2", content: "Can you help with with the last task for Eventora, please?", isSent: false },
   { id: "m3", content: "I'm little bit confused with the task.. 😅", timestamp: "10:17 AM", isSent: false },
   { id: "m4", content: "it's done already, no worries!", timestamp: "10:22 AM", isSent: true, isRead: true },
-  { id: "m5", content: "what...", timestamp: "10:32 AM", isSent: false },
+  { id: "m5", content: "what...", isSent: false },
   { id: "m6", content: "Really?! Thank you so much! 😍", timestamp: "10:32 AM", isSent: false },
-  { id: "m7", content: "anytime! my pleasure~\n🌹", timestamp: "11:01 AM", isSent: true, isRead: true },
+  { id: "m7", content: "anytime! my pleasure~", timestamp: "11:01 AM", isSent: true, isRead: true, reactions: ["❣️"] },
 ];
 
 const sampleMedia = [
@@ -97,10 +107,10 @@ const sampleMedia = [
   { id: "media9", type: "image" as const, thumbnail: "https://images.unsplash.com/photo-1557683311-eac922347aa1?w=200&h=200&fit=crop", month: "April" },
   { id: "media10", type: "image" as const, thumbnail: "https://images.unsplash.com/photo-1614854262318-831574f15f1f?w=200&h=200&fit=crop", month: "April" },
   { id: "media11", type: "image" as const, thumbnail: "https://images.unsplash.com/photo-1557682224-5b8590cd9ec5?w=200&h=200&fit=crop", month: "April" },
-  { id: "link1", type: "link" as const, url: "https://basecamp.net/", description: "Discover thousands of premium UI kits, templates, and design resources tailored for designers, developers, and...", icon: "https://basecamp.com/favicon.ico" },
-  { id: "link2", type: "link" as const, url: "https://notion.com/", description: "A new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team.", icon: "https://notion.so/favicon.ico" },
-  { id: "link3", type: "link" as const, url: "https://asana.com/", description: "Work anytime, anywhere with Asana. Keep remote and distributed teams, and your entire organization, focused..." },
-  { id: "link4", type: "link" as const, url: "https://trello.com/", description: "Make the impossible, possible with Trello. The ultimate teamwork project management tool. Start up board in se..." },
+  { id: "link1", type: "link" as const, url: "https://basecamp.net/", description: "Discover thousands of premium UI kits, templates, and design resources tailored for designers, developers, and...", icon: basecamp },
+  { id: "link2", type: "link" as const, url: "https://notion.com/", description: "A new tool that blends your everyday work apps into one. It's the all-in-one workspace for you and your team.", icon: notion },
+  { id: "link3", type: "link" as const, url: "https://asana.com/", description: "Work anytime, anywhere with Asana. Keep remote and distributed teams, and your entire organization, focused...", icon: asana },
+  { id: "link4", type: "link" as const, url: "https://trello.com/", description: "Make the impossible, possible with Trello. The ultimate teamwork project management tool. Start up board in se...", icon: trello },
   { id: "doc1", type: "doc" as const, title: "Document Requirement.pdf", pages: 10, size: "16 MB", month: "May" },
   { id: "doc2", type: "doc" as const, title: "User Flow.pdf", pages: 7, size: "32 MB", month: "May" },
   { id: "doc3", type: "doc" as const, title: "Existing App.fig", size: "213 MB", month: "May" },
