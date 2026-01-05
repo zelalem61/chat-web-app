@@ -21,7 +21,7 @@ const navItems = [
 
 export function IconSidebar({ activeItem, onItemClick }: IconSidebarProps) {
   return (
-    <div className="flex h-[1024px] w-[76px] flex-col items-center justify-between border-r border-border bg-card pt-6 pr-4 pb-6 pl-4">
+    <div className="flex h-full w-[76px] flex-col items-center justify-between border-r border-border bg-card pt-6 pr-4 pb-6 pl-4">
       {/* Top section */}
       <div className="flex flex-col items-center">
         {/* Logo */}
